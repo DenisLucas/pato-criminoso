@@ -1,0 +1,121 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://scripts/select.gd" type="Script" id=1]
+[ext_resource path="res://sprites/phases/1.png" type="Texture" id=2]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 98.1216, 96.1885 )
+
+[node name="select" type="Node2D"]
+script = ExtResource( 1 )
+phasesU = 5
+
+[node name="phase1" type="Area2D" parent="."]
+position = Vector2( 78.4003, 21.1893 )
+
+[node name="1" type="Sprite" parent="phase1"]
+position = Vector2( 129.019, 216.41 )
+scale = Vector2( 0.376304, 0.622434 )
+texture = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="phase1"]
+position = Vector2( 127.961, 215.513 )
+shape = SubResource( 1 )
+disabled = true
+
+[node name="Label" type="Label" parent="phase1"]
+margin_left = 101.562
+margin_top = 318.942
+margin_right = 141.562
+margin_bottom = 332.942
+rect_pivot_offset = Vector2( -205.585, 143.634 )
+text = "00:00"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="phase2" type="Area2D" parent="."]
+position = Vector2( 281.26, 21.4271 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="phase2"]
+position = Vector2( 127.961, 215.513 )
+shape = SubResource( 1 )
+disabled = true
+
+[node name="Label2" type="Label" parent="phase2"]
+margin_left = 110.702
+margin_top = 318.704
+margin_right = 150.702
+margin_bottom = 332.704
+rect_pivot_offset = Vector2( -205.585, 143.634 )
+text = "00:00"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="phase3" type="Area2D" parent="."]
+position = Vector2( 484.848, 21.1893 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="phase3"]
+position = Vector2( 127.961, 215.513 )
+shape = SubResource( 1 )
+disabled = true
+
+[node name="Label3" type="Label" parent="phase3"]
+margin_left = 110.114
+margin_top = 318.942
+margin_right = 150.114
+margin_bottom = 332.942
+rect_pivot_offset = Vector2( -205.585, 143.634 )
+text = "00:00"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="phase4" type="Area2D" parent="."]
+position = Vector2( 687.151, 21.6019 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="phase4"]
+position = Vector2( 127.961, 215.513 )
+shape = SubResource( 1 )
+disabled = true
+
+[node name="Label4" type="Label" parent="phase4"]
+margin_left = 111.811
+margin_top = 318.529
+margin_right = 151.811
+margin_bottom = 332.529
+rect_pivot_offset = Vector2( -205.585, 143.634 )
+text = "00:00"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="phase5" type="Area2D" parent="."]
+position = Vector2( 389.882, 220.012 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="phase5"]
+position = Vector2( 125.842, 236.513 )
+shape = SubResource( 1 )
+disabled = true
+
+[node name="Label5" type="Label" parent="phase5"]
+margin_left = 107.854
+margin_top = 341.761
+margin_right = 147.854
+margin_bottom = 355.761
+rect_pivot_offset = Vector2( -205.585, 143.634 )
+text = "00:00"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="mouse_entered" from="phase1" to="." method="_on_phase1_mouse_entered"]
+[connection signal="mouse_exited" from="phase1" to="." method="_on_phase_mouse_exited"]
+[connection signal="mouse_entered" from="phase2" to="." method="_on_phase2_mouse_entered"]
+[connection signal="mouse_exited" from="phase2" to="." method="_on_phase_mouse_exited"]
+[connection signal="mouse_entered" from="phase3" to="." method="_on_phase3_mouse_entered"]
+[connection signal="mouse_exited" from="phase3" to="." method="_on_phase_mouse_exited"]
+[connection signal="mouse_entered" from="phase4" to="." method="_on_phase4_mouse_entered"]
+[connection signal="mouse_exited" from="phase4" to="." method="_on_phase_mouse_exited"]
+[connection signal="mouse_entered" from="phase5" to="." method="_on_phase5_mouse_entered"]
+[connection signal="mouse_exited" from="phase5" to="." method="_on_phase_mouse_exited"]
