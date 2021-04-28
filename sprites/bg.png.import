@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/gold statue.png-af0bb44b909d01871aa39b7d4ff126e9.stex"
+path="res://.import/bg.png-c437bba7722705cd75f308560029cc1e.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/gold statue.png"
-dest_files=[ "res://.import/gold statue.png-af0bb44b909d01871aa39b7d4ff126e9.stex" ]
+source_file="res://sprites/bg.png"
+dest_files=[ "res://.import/bg.png-c437bba7722705cd75f308560029cc1e.stex" ]
 
 [params]
 
@@ -20,7 +20,7 @@ compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=false
+flags/filter=true
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2

@@ -5,7 +5,6 @@ func _on_scene_updatescore(score):
 
 
 func _on_scene_notenough(left):
-	print("hi")
 	$Label2.text = "You still needs %s$, to get out" % str(left)
 	$Timer.start()
 	

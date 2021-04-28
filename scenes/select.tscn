@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://scripts/select.gd" type="Script" id=1]
 [ext_resource path="res://sprites/phases/1.png" type="Texture" id=2]
+[ext_resource path="res://scripts/SaveLoad.gd" type="Script" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 98.1216, 96.1885 )
@@ -9,6 +10,9 @@ extents = Vector2( 98.1216, 96.1885 )
 [node name="select" type="Node2D"]
 script = ExtResource( 1 )
 phasesU = 5
+
+[node name="SaveLoad" type="Node2D" parent="."]
+script = ExtResource( 3 )
 
 [node name="phase1" type="Area2D" parent="."]
 position = Vector2( 78.4003, 21.1893 )

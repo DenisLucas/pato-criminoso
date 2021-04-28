@@ -6,7 +6,10 @@ var time = []
 var selPhase = 0
 
 func _ready():
-	var data = loadData()
+	var saveload = get_node("SaveLoad")
+	var data = saveload.loadfiles()
+	if data == null:
+		saveload.savefile()
 	if data != null:
 		phasesU = data["phase"]
 		$phase1/Label.text = "{sec}:{min}".format({"sec":data["time"][0][0],"min":data["time"][0][1]})
@@ -41,31 +44,6 @@ func _on_phase5_mouse_entered():
 func _on_phase_mouse_exited():
 	selPhase = 0
 
-func saveData():
-	var data =  {
-		"phase" : 1,
-		"time" : [[0,0],[0,0],[0,0],[0,0],[0,0]],
-		"timer" : [0,0],
-		"bestTime" : [0,0],
-	}
-	var file = File.new()
-	if !file.file_exists(save_path):
-		var error = file.open(save_path, file.WRITE)
-		if error == OK:
-			file.store_var(data)
-			file.close()
-	loadData()
-	
-func loadData():
-	var file = File.new()
-	var playerData
-	if file.file_exists(save_path):
-		var error = file.open(save_path,file.READ)
-		if error == OK:
-			playerData = file.get_var()
-			file.close()
-	else:
-		saveData()
-	return playerData
-			
+
+
 

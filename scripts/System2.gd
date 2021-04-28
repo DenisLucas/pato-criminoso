@@ -1,6 +1,5 @@
 extends Node2D
 
-
 var score = 0
 export var minscore = 0 
 var sec = 0
