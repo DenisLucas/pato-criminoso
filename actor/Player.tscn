@@ -1,16 +1,18 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://scripts/PlayerMovement.gd" type="Script" id=1]
 [ext_resource path="res://sprites/patinho criminoso.png" type="Texture" id=2]
 
-[sub_resource type="CapsuleShape2D" id=1]
-height = 10.6151
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 4.51437, 11.5761 )
 
-[sub_resource type="CircleShape2D" id=2]
-radius = 9.07557
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 3.09607, 0.923656 )
 
-[sub_resource type="Animation" id=3]
-resource_name = "PDCabra"
+[sub_resource type="RectangleShape2D" id=6]
+extents = Vector2( 7.22057, 13.5962 )
+
+[sub_resource type="Animation" id=4]
 length = 50.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("patinho criminoso:frame")
@@ -25,7 +27,7 @@ tracks/0/keys = {
 "values": [ 5, 5 ]
 }
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=5]
 length = 0.4
 loop = true
 tracks/0/type = "value"
@@ -45,19 +47,13 @@ tracks/0/keys = {
 "player",
 ]]
 script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
 speed = 300
 jump_speed = -900
 friction = 0.5
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( -5.33936, 5.67307 )
-shape = SubResource( 1 )
-
-[node name="groundDetect" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="groundDetect"]
-position = Vector2( -5.00565, 15.6754 )
-shape = SubResource( 2 )
+fallbreak = 0.5
 
 [node name="patinho criminoso" type="Sprite" parent="."]
 position = Vector2( -3.77357, 4.51815 )
@@ -67,13 +63,32 @@ vframes = 2
 hframes = 4
 frame = 5
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/PDCabra = SubResource( 3 )
-anims/walk = SubResource( 4 )
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+position = Vector2( -5.77844, 8.25464 )
+shape = SubResource( 1 )
 
-[node name="jumpSave" type="Timer" parent="."]
-wait_time = 0.08
+[node name="groundDetect" type="Area2D" parent="."]
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="groundDetect"]
+position = Vector2( -5.86442, 20.7049 )
+shape = SubResource( 2 )
+
+[node name="hit" type="Area2D" parent="."]
+position = Vector2( 0.397301, -0.264866 )
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="hit"]
+position = Vector2( -5.6704, 7.38164 )
+shape = SubResource( 6 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/PDCabra = SubResource( 4 )
+anims/walk = SubResource( 5 )
+
+[node name="JumpSave" type="Timer" parent="."]
+wait_time = 0.2
 one_shot = true
 [connection signal="body_entered" from="groundDetect" to="." method="_on_Area2D_body_entered"]
 [connection signal="body_exited" from="groundDetect" to="." method="_on_Area2D_body_exited"]
-[connection signal="timeout" from="jumpSave" to="." method="_on_Timer_timeout"]
+[connection signal="area_entered" from="hit" to="." method="_on_hit_area_entered"]
+[connection signal="body_entered" from="hit" to="." method="_on_hit_body_entered"]
+[connection signal="timeout" from="JumpSave" to="." method="_on_Timer_timeout"]

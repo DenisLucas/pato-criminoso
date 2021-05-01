@@ -113,6 +113,17 @@ text = "00:00"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Label6" type="Label" parent="."]
+margin_left = 708.056
+margin_top = 576.699
+margin_right = 777.056
+margin_bottom = 590.699
+rect_pivot_offset = Vector2( -205.585, 143.634 )
+text = "Best Time:"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 [connection signal="mouse_entered" from="phase1" to="." method="_on_phase1_mouse_entered"]
 [connection signal="mouse_exited" from="phase1" to="." method="_on_phase_mouse_exited"]
 [connection signal="mouse_entered" from="phase2" to="." method="_on_phase2_mouse_entered"]

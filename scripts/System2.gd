@@ -1,15 +1,25 @@
 extends Node2D
 
 var score = 0
-export var minscore = 0 
 var sec = 0
 var minu = 0
+var Psec = 0
+var Pminu = 0
 var onending = false
+var bullets =  []
+var sequence = true
+export var Nscene = 2
+export var minscore = 0 
+export var Sscene = 0
+
+const ball = preload("res://scenes/ball.tscn")
+export var NS = "res://scenes/select.tscn"
+
 signal updatescore(score)
 signal notenough(left)
 signal Updatetimer(time)
 signal start(left)
-var save_path = "user://save.dat"
+
 onready var saveload = get_node("/root/SaveLoad")
 
 func _ready():
@@ -19,11 +29,14 @@ func _ready():
 	emit_signal("start",minscore)
 	
 func _process(_delta):
+	if Input.is_action_just_pressed("start"):
+		sequence = false
+		var _scene = get_tree().change_scene("res://scenes/select.tscn") 
 	if onending:
 		if score >= minscore:
 			$Timer.stop()
 			saveData()
-			var _scene = get_tree().change_scene("res://scenes/select.tscn") 
+			var _scene = get_tree().change_scene(NS) 
 		else:
 			var left = minscore - score
 			emit_signal("notenough",left)
@@ -45,24 +58,28 @@ func _on_fim_body_exited(body):
 
 func _on_Timer_timeout():
 	sec += 1
+	Psec += 1
 	if sec >= 60:
 		minu += 1
 		sec -= 60
+	if Psec >= 60:
+		Pminu += 1
+		Psec -= 60
 	var time = "{min}:{sec}"
 	time = time.format({"min": str(minu), "sec": str(sec)})
 	emit_signal("Updatetimer",time)
 
 func saveData():
 	var playerData = saveload.loadfiles()
-	if playerData["phase"] < 2:
-		playerData["phase"] = 2
-	if playerData["time"][0] != [0,0]: 
-		if playerData["time"][0][0] > minu:
-			 playerData["time"][0] = [minu,sec]
-		if playerData["time"][0][0] == minu and playerData["time"][0][1] > sec:
-			 playerData["time"][0] = [minu,sec]
+	if playerData["phase"] <= Nscene:
+		playerData["phase"] = Nscene
+	if playerData["time"][Sscene][0] != 0 and playerData["time"][Sscene][1] != 0:
+		if playerData["time"][Sscene][0] > Pminu or playerData["time"][Sscene][0] == 0:
+			 playerData["time"][Sscene] = [Pminu,Psec]
+		if playerData["time"][Sscene][0] == Pminu and playerData["time"][0][1] > Psec:
+			 playerData["time"][Sscene] = [Pminu,Psec]
 	else:
-		playerData["time"][0] = [minu,sec]
+		playerData["time"][Sscene] = [Pminu,Psec]
 	playerData["timer"] = [minu,sec]
 	SaveLoad.savefile(playerData)
 
@@ -82,5 +99,19 @@ func timerLoad():
 	
 func _on_hit_body_entered(body):
 	if body.is_in_group("player"):
-		timerSave()
-		var _scene = get_tree().change_scene("res://scenes/test.tscn") 
+		death()
+		
+func death():
+	timerSave()
+	var _scene = get_tree().reload_current_scene()
+	 
+func _on_blaster_fire(dir,posi):
+	var gold = ball.instance()
+	$".".add_child(gold)
+	gold.global_position = posi
+	gold.setDir(dir)
+	bullets.append(gold)
+
+
+func _on_Player_hit():
+	death()

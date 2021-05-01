@@ -1,0 +1,67 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://tiles/stairs.tres" type="TileSet" id=1]
+[ext_resource path="res://scripts/interface.gd" type="Script" id=2]
+[ext_resource path="res://scripts/System3.gd" type="Script" id=3]
+[ext_resource path="res://sprites/janela.png" type="Texture" id=4]
+[ext_resource path="res://tiles/ground.tres" type="TileSet" id=5]
+[ext_resource path="res://actor/Player.tscn" type="PackedScene" id=6]
+[ext_resource path="res://scenes/interface.tscn" type="PackedScene" id=7]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 10, 7.01982 )
+
+[node name="scene" type="Node2D"]
+script = ExtResource( 3 )
+minscore = 10
+
+[node name="fim" type="Area2D" parent="."]
+position = Vector2( 541.304, 63.496 )
+scale = Vector2( 2, 2 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="fim"]
+texture = ExtResource( 4 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="fim"]
+position = Vector2( 0.210224, -1.15623 )
+shape = SubResource( 1 )
+
+[node name="ground" type="TileMap" parent="." groups=[
+"ground",
+]]
+tile_set = ExtResource( 5 )
+cell_size = Vector2( 16, 16 )
+format = 1
+tile_data = PoolIntArray( 327709, 1, 0, 327710, 1, 0, 327711, 1, 0, 327712, 1, 0, 327713, 1, 0, 327714, 1, 0, 327715, 1, 0, 327716, 1, 0 )
+
+[node name="stair" type="TileMap" parent="."]
+tile_set = ExtResource( 1 )
+format = 1
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="interface" parent="CanvasLayer" instance=ExtResource( 7 )]
+margin_left = 4.0
+margin_top = 3.0
+margin_right = 1.0
+margin_bottom = -1.0
+script = ExtResource( 2 )
+
+[node name="Timer" type="Timer" parent="CanvasLayer/interface"]
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[node name="Player" parent="." instance=ExtResource( 6 )]
+position = Vector2( 486.442, 59.0579 )
+[connection signal="Updatetimer" from="." to="CanvasLayer/interface" method="_on_scene_Updatetimer"]
+[connection signal="notenough" from="." to="CanvasLayer/interface" method="_on_scene_notenough"]
+[connection signal="start" from="." to="CanvasLayer/interface" method="_on_scene_start"]
+[connection signal="updatescore" from="." to="CanvasLayer/interface" method="_on_scene_updatescore"]
+[connection signal="body_entered" from="fim" to="." method="_on_fim_body_entered"]
+[connection signal="body_exited" from="fim" to="." method="_on_fim_body_exited"]
+[connection signal="timeout" from="CanvasLayer/interface/Timer" to="CanvasLayer/interface" method="_on_Timer_timeout"]
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

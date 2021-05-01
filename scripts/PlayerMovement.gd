@@ -12,6 +12,7 @@ export (float, 0, 1.0) var fallbreak = 0.1
 var Cjump = true
 var OnStair = false
 
+signal hit()
 
 func GetInput():
 	var dir = 0
@@ -29,6 +30,8 @@ func GetInput():
 			Velocity.y = lerp(Velocity.y, -speed, fallbreak)
 		if Input.is_action_just_released("Jump") or Input.is_action_just_released("Move-Down"):
 			Velocity.y = 0
+		if Input.is_action_just_released("Move-Left") or Input.is_action_just_released("Move-Right"):
+			Velocity.x = 0
 	if dir != 0:
 		if Cjump:
 			$AnimationPlayer.play("walk")
@@ -48,7 +51,7 @@ func _physics_process(delta):
 		Velocity.y += gravity * delta
 	Velocity = move_and_slide(Velocity, Vector2.UP)
 	if Input.is_action_just_pressed("Jump"):
-		if Cjump:
+		if Cjump and !OnStair:
 			Velocity.y = jump_speed
 	if Input.is_action_just_released("Jump"):
 		if Velocity.y < 0:
@@ -63,11 +66,12 @@ func _on_Area2D_body_entered(body):
 
 func _on_Area2D_body_exited(body):
 	if body.is_in_group("ground"):
-		$jumpSave.start()
+		$JumpSave.start()
 
 func _on_stairs_body_entered(body):
 	if body.is_in_group("player"):
 			OnStair = true
+			Velocity.y = 0
 
 
 func _on_stairs_body_exited(body):
@@ -75,3 +79,13 @@ func _on_stairs_body_exited(body):
 		OnStair = false
 		Cjump = true
 		Velocity.y = 0
+
+
+func _on_hit_body_entered(body):
+	if body.is_in_group("damage"):
+		emit_signal("hit")
+
+
+func _on_hit_area_entered(area):
+	if area.is_in_group("damage"):
+		emit_signal("hit")

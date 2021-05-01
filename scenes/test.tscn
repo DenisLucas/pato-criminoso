@@ -1,7 +1,7 @@
 [gd_scene load_steps=36 format=2]
 
 [ext_resource path="res://actor/Player.tscn" type="PackedScene" id=1]
-[ext_resource path="res://scripts/system.gd" type="Script" id=2]
+[ext_resource path="res://scripts/System2.gd" type="Script" id=2]
 [ext_resource path="res://scripts/coins.gd" type="Script" id=3]
 [ext_resource path="res://scenes/interface.tscn" type="PackedScene" id=4]
 [ext_resource path="res://scripts/interface.gd" type="Script" id=5]
@@ -16,11 +16,12 @@
 [ext_resource path="res://sprites/porta.png" type="Texture" id=14]
 [ext_resource path="res://sprites/prototipe/spike.png" type="Texture" id=15]
 [ext_resource path="res://scripts/spike.gd" type="Script" id=16]
+[ext_resource path="res://anim/spike.tres" type="Animation" id=17]
 
-[sub_resource type="RectangleShape2D" id=29]
+[sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 29.5806, 16.1594 )
 
-[sub_resource type="TileSet" id=10]
+[sub_resource type="TileSet" id=2]
 0/name = "WalkJump.png 0"
 0/texture = ExtResource( 12 )
 0/tex_offset = Vector2( 0, 0 )
@@ -106,81 +107,30 @@ extents = Vector2( 29.5806, 16.1594 )
 5/shapes = [  ]
 5/z_index = 0
 
-[sub_resource type="RectangleShape2D" id=12]
+[sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 16.1946, 57.5231 )
 
-[sub_resource type="RectangleShape2D" id=13]
+[sub_resource type="RectangleShape2D" id=4]
 extents = Vector2( 17.5842, 73.3135 )
 
-[sub_resource type="RectangleShape2D" id=14]
+[sub_resource type="RectangleShape2D" id=5]
 extents = Vector2( 16.2405, 42.7682 )
 
-[sub_resource type="RectangleShape2D" id=15]
+[sub_resource type="RectangleShape2D" id=6]
 extents = Vector2( 16.8259, 125.992 )
 
-[sub_resource type="RectangleShape2D" id=16]
+[sub_resource type="RectangleShape2D" id=7]
 extents = Vector2( 15.5344, 54.9425 )
 
-[sub_resource type="RectangleShape2D" id=17]
+[sub_resource type="RectangleShape2D" id=8]
 extents = Vector2( 13.8458, 94.2398 )
 
-[sub_resource type="CircleShape2D" id=18]
+[sub_resource type="CircleShape2D" id=9]
 
-[sub_resource type="Animation" id=19]
-length = 0.9
-tracks/0/type = "value"
-tracks/0/path = NodePath(".:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.5, 0.6, 0.7, 0.8 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
-"update": 1,
-"values": [ 0, 1, 2, 3, 3, 2, 1, 0 ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath(".:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray(  ),
-"transitions": PoolRealArray(  ),
-"update": 0,
-"values": [  ]
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath(".:rotation_degrees")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray(  ),
-"transitions": PoolRealArray(  ),
-"update": 0,
-"values": [  ]
-}
-tracks/3/type = "value"
-tracks/3/path = NodePath("hit/CollisionShape2D:disabled")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/keys = {
-"times": PoolRealArray( 0, 0.2, 0.7, 0.8 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
-"update": 1,
-"values": [ true, false, false, true ]
-}
-
-[sub_resource type="RectangleShape2D" id=20]
+[sub_resource type="RectangleShape2D" id=10]
 extents = Vector2( 10, 5.84949 )
 
-[sub_resource type="Animation" id=21]
+[sub_resource type="Animation" id=11]
 length = 0.9
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:frame")
@@ -231,7 +181,7 @@ tracks/3/keys = {
 "values": [ true, false, false, true ]
 }
 
-[sub_resource type="Animation" id=22]
+[sub_resource type="Animation" id=12]
 resource_name = "spike"
 length = 0.9
 tracks/0/type = "value"
@@ -283,7 +233,7 @@ tracks/3/keys = {
 "values": [ true, false, false, true ]
 }
 
-[sub_resource type="Animation" id=23]
+[sub_resource type="Animation" id=13]
 resource_name = "spike"
 length = 0.9
 tracks/0/type = "value"
@@ -335,7 +285,7 @@ tracks/3/keys = {
 "values": [ true, false, false, true ]
 }
 
-[sub_resource type="Animation" id=24]
+[sub_resource type="Animation" id=14]
 length = 0.9
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:frame")
@@ -386,7 +336,7 @@ tracks/3/keys = {
 "values": [ true, false, false, true ]
 }
 
-[sub_resource type="Animation" id=25]
+[sub_resource type="Animation" id=15]
 length = 0.9
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:frame")
@@ -437,7 +387,7 @@ tracks/3/keys = {
 "values": [ true, false, false, true ]
 }
 
-[sub_resource type="Animation" id=26]
+[sub_resource type="Animation" id=16]
 length = 0.9
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:frame")
@@ -488,7 +438,7 @@ tracks/3/keys = {
 "values": [ true, false, false, true ]
 }
 
-[sub_resource type="Animation" id=27]
+[sub_resource type="Animation" id=17]
 length = 0.9
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:frame")
@@ -539,7 +489,7 @@ tracks/3/keys = {
 "values": [ true, false, false, true ]
 }
 
-[sub_resource type="Animation" id=28]
+[sub_resource type="Animation" id=18]
 length = 0.9
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:frame")
@@ -593,6 +543,7 @@ tracks/3/keys = {
 [node name="scene" type="Node2D"]
 script = ExtResource( 2 )
 minscore = 200
+NS = "res://scenes/phase2.tscn"
 
 [node name="fim" type="Area2D" parent="."]
 position = Vector2( -8.00903, 14.0159 )
@@ -602,7 +553,7 @@ __meta__ = {
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="fim"]
 position = Vector2( 56.307, 535.458 )
-shape = SubResource( 29 )
+shape = SubResource( 1 )
 
 [node name="window" type="Sprite" parent="fim"]
 position = Vector2( 56.6936, 540.937 )
@@ -624,7 +575,7 @@ format = 1
 tile_data = PoolIntArray( 589865, 1, 0, 589866, 1, 0, 589882, 1, 0, 589883, 1, 0, 655401, 1, 0, 655402, 1, 0, 655418, 1, 0, 655419, 1, 0, 720937, 1, 0, 720938, 1, 0, 720954, 1, 0, 720955, 1, 0, 786473, 1, 0, 786474, 1, 0, 786490, 1, 0, 786491, 1, 0, 851969, 1610612737, 0, 851970, 1610612737, 0, 852009, 1, 0, 852010, 1, 0, 852026, 1, 0, 852027, 1, 0, 917505, 1610612737, 0, 917506, 1610612737, 0, 917545, 1, 0, 917546, 1, 0, 917562, 1, 0, 917563, 1, 0, 983041, 1610612737, 0, 983042, 1610612737, 0, 983072, 1, 0, 983073, 1, 0, 983087, 1, 0, 983088, 1, 0, 1048577, 1610612737, 0, 1048578, 1610612737, 0, 1048608, 1, 0, 1048609, 1, 0, 1048623, 1, 0, 1048624, 1, 0, 1114113, 1610612737, 0, 1114114, 1610612737, 0, 1114144, 1, 0, 1114145, 1, 0, 1114159, 1, 0, 1114160, 1, 0, 1179649, 1610612737, 0, 1179650, 1610612737, 0, 1179680, 1, 0, 1179681, 1, 0, 1179695, 1, 0, 1179696, 1, 0, 1245185, 1610612737, 0, 1245186, 1610612737, 0, 1245216, 1, 0, 1245217, 1, 0, 1245231, 1, 0, 1245232, 1, 0, 1310721, 1610612737, 0, 1310722, 1610612737, 0, 1310774, 1, 0, 1310775, 1, 0, 1376257, 1610612737, 0, 1376258, 1610612737, 0, 1376310, 1, 0, 1376311, 1, 0, 1441793, 1610612737, 0, 1441794, 1610612737, 0, 1441846, 1, 0, 1441847, 1, 0, 1507329, 1610612737, 0, 1507330, 1610612737, 0, 1507382, 1, 0, 1507383, 1, 0, 1572865, 1610612737, 0, 1572866, 1610612737, 0, 1572918, 1, 0, 1572919, 1, 0, 1638401, 1610612737, 0, 1638402, 1610612737, 0, 1638411, 1610612737, 0, 1638412, 1610612737, 0, 1638454, 1, 0, 1638455, 1, 0, 1703937, 1610612737, 0, 1703938, 1610612737, 0, 1703947, 1610612737, 0, 1703948, 1610612737, 0, 1703966, 1610612737, 0, 1703967, 1610612737, 0, 1703990, 1, 0, 1703991, 1, 0, 1769473, 1610612737, 0, 1769474, 1610612737, 0, 1769483, 1610612737, 0, 1769484, 1610612737, 0, 1769502, 1610612737, 0, 1769503, 1610612737, 0, 1769526, 1, 0, 1835009, 1610612737, 0, 1835010, 1610612737, 0, 1835019, 1610612737, 0, 1835020, 1610612737, 0, 1835038, 1610612737, 0, 1835039, 1610612737, 0, 1835062, 1, 0, 1900574, 1, 0, 1900575, 1, 0, 1900580, 1, 0, 1900581, 1, 0, 1966110, 1, 0, 1966111, 1, 0, 1966116, 1, 0, 1966117, 1, 0, 2031646, 1, 0, 2031647, 1, 0, 2031652, 1, 0, 2031653, 1, 0, 2097182, 1, 0, 2097183, 1, 0, 2097188, 1, 0, 2097189, 1, 0, 2162718, 1, 0, 2162719, 1, 0, 2162724, 1, 0, 2162725, 1, 0, 2228254, 1, 0, 2228255, 1, 0, 2228260, 1, 0, 2228261, 1, 0, 2293790, 1, 0, 2293791, 1, 0, 2293796, 1, 0, 2293797, 1, 0 )
 
 [node name="tutorial" type="TileMap" parent="."]
-tile_set = SubResource( 10 )
+tile_set = SubResource( 2 )
 cell_size = Vector2( 16, 16 )
 format = 1
 tile_data = PoolIntArray( 2031621, 3, 0, 2031623, 4, 0, 2031625, 536870917, 0, 2097180, 5, 0, 2097190, 1610612738, 0, 2162693, 0, 0, 2162695, 1, 0, 2162697, 536870914, 0, 2162716, -1610612736, 0 )
@@ -693,9 +644,9 @@ __meta__ = {
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 16.6246
-margin_top = 2.48758
+margin_top = -1.04794
 margin_right = 1037.62
-margin_bottom = 604.488
+margin_bottom = 600.952
 script = ExtResource( 5 )
 
 [node name="Timer" type="Timer" parent="CanvasLayer/interface"]
@@ -705,39 +656,39 @@ position = Vector2( -137.907, 87.4532 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="stairs"]
 position = Vector2( 730.202, 431.548 )
-shape = SubResource( 12 )
+shape = SubResource( 3 )
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="stairs"]
 position = Vector2( 1017.83, 303.004 )
-shape = SubResource( 13 )
+shape = SubResource( 4 )
 
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="stairs"]
 position = Vector2( 904.926, 193.326 )
-shape = SubResource( 14 )
+shape = SubResource( 5 )
 
 [node name="CollisionShape2D5" type="CollisionShape2D" parent="stairs"]
 position = Vector2( 666.068, 193.691 )
-shape = SubResource( 14 )
+shape = SubResource( 5 )
 
 [node name="CollisionShape2D9" type="CollisionShape2D" parent="stairs"]
 position = Vector2( 329.17, 348.775 )
-shape = SubResource( 14 )
+shape = SubResource( 5 )
 
 [node name="CollisionShape2D8" type="CollisionShape2D" parent="stairs"]
 position = Vector2( 171.13, 244.423 )
-shape = SubResource( 15 )
+shape = SubResource( 6 )
 
 [node name="CollisionShape2D6" type="CollisionShape2D" parent="stairs"]
 position = Vector2( 809.563, 108.818 )
-shape = SubResource( 16 )
+shape = SubResource( 7 )
 
 [node name="CollisionShape2D7" type="CollisionShape2D" parent="stairs"]
 position = Vector2( 1081.89, 107.828 )
-shape = SubResource( 16 )
+shape = SubResource( 7 )
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="stairs"]
 position = Vector2( 633.76, 420.038 )
-shape = SubResource( 17 )
+shape = SubResource( 8 )
 
 [node name="coins" type="Node2D" parent="."]
 
@@ -751,7 +702,7 @@ quantity = 10
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="coins/coins"]
 position = Vector2( 542.092, 549.802 )
-shape = SubResource( 18 )
+shape = SubResource( 9 )
 
 [node name="carteira" type="Sprite" parent="coins/coins"]
 position = Vector2( 541.436, 548.727 )
@@ -767,7 +718,7 @@ quantity = 10
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="coins/coins6"]
 position = Vector2( 542.092, 549.802 )
-shape = SubResource( 18 )
+shape = SubResource( 9 )
 
 [node name="carteira" type="Sprite" parent="coins/coins6"]
 position = Vector2( 541.436, 548.727 )
@@ -783,7 +734,7 @@ quantity = 50
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="coins/coins7"]
 position = Vector2( 542.092, 549.802 )
-shape = SubResource( 18 )
+shape = SubResource( 9 )
 
 [node name="carteira" type="Sprite" parent="coins/coins7"]
 position = Vector2( 541.436, 548.727 )
@@ -799,7 +750,7 @@ quantity = 10
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="coins/coins2"]
 position = Vector2( 542.092, 549.802 )
-shape = SubResource( 18 )
+shape = SubResource( 9 )
 
 [node name="carteira" type="Sprite" parent="coins/coins2"]
 position = Vector2( 541.436, 548.727 )
@@ -815,7 +766,7 @@ quantity = 50
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="coins/coins3"]
 position = Vector2( 542.092, 549.802 )
-shape = SubResource( 18 )
+shape = SubResource( 9 )
 
 [node name="carteira" type="Sprite" parent="coins/coins3"]
 position = Vector2( 542.77, 547.392 )
@@ -831,7 +782,7 @@ quantity = 50
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="coins/coins9"]
 position = Vector2( 542.092, 549.802 )
-shape = SubResource( 18 )
+shape = SubResource( 9 )
 
 [node name="carteira" type="Sprite" parent="coins/coins9"]
 position = Vector2( 542.77, 547.392 )
@@ -847,7 +798,7 @@ quantity = 50
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="coins/coins8"]
 position = Vector2( 542.092, 549.802 )
-shape = SubResource( 18 )
+shape = SubResource( 9 )
 
 [node name="carteira" type="Sprite" parent="coins/coins8"]
 position = Vector2( 542.77, 547.392 )
@@ -863,7 +814,7 @@ quantity = 50
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="coins/coins4"]
 position = Vector2( 542.092, 549.802 )
-shape = SubResource( 18 )
+shape = SubResource( 9 )
 
 [node name="carteira" type="Sprite" parent="coins/coins4"]
 position = Vector2( 541.436, 548.727 )
@@ -879,7 +830,7 @@ quantity = 100
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="coins/coins5"]
 position = Vector2( 542.092, 549.802 )
-shape = SubResource( 18 )
+shape = SubResource( 9 )
 
 [node name="carteira" type="Sprite" parent="coins/coins5"]
 position = Vector2( 541.436, 548.727 )
@@ -888,11 +839,8 @@ texture = ExtResource( 9 )
 [node name="Timer" type="Timer" parent="."]
 autostart = true
 
-[node name="Player" parent="." groups=[
-"player",
-] instance=ExtResource( 1 )]
+[node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( 110.713, 548.627 )
-fallbreak = 0.5
 
 [node name="damage" type="Node2D" parent="."]
 position = Vector2( 381.989, 556.199 )
@@ -907,20 +855,20 @@ __meta__ = {
 }
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="damage/spike"]
-anims/spike = SubResource( 19 )
+anims/spike = ExtResource( 17 )
 
 [node name="Area2D" type="Area2D" parent="damage/spike"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="damage/spike/Area2D"]
 position = Vector2( -0.666656, 4 )
-shape = SubResource( 20 )
+shape = SubResource( 10 )
 
 [node name="hit" type="Area2D" parent="damage/spike"]
 position = Vector2( -0.333328, 0.25 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="damage/spike/hit"]
 position = Vector2( -0.666656, 4 )
-shape = SubResource( 20 )
+shape = SubResource( 10 )
 disabled = true
 
 [node name="spike2" type="Sprite" parent="damage"]
@@ -933,20 +881,20 @@ __meta__ = {
 }
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="damage/spike2"]
-anims/spike = SubResource( 21 )
+anims/spike = SubResource( 11 )
 
 [node name="Area2D" type="Area2D" parent="damage/spike2"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="damage/spike2/Area2D"]
 position = Vector2( -0.666656, 4 )
-shape = SubResource( 20 )
+shape = SubResource( 10 )
 
 [node name="hit" type="Area2D" parent="damage/spike2"]
 position = Vector2( -0.333328, 0.25 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="damage/spike2/hit"]
 position = Vector2( -0.666656, 4 )
-shape = SubResource( 20 )
+shape = SubResource( 10 )
 disabled = true
 
 [node name="spike8" type="Sprite" parent="damage"]
@@ -959,20 +907,20 @@ __meta__ = {
 }
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="damage/spike8"]
-anims/spike = SubResource( 22 )
+anims/spike = SubResource( 12 )
 
 [node name="Area2D" type="Area2D" parent="damage/spike8"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="damage/spike8/Area2D"]
 position = Vector2( -0.666656, 4 )
-shape = SubResource( 20 )
+shape = SubResource( 10 )
 
 [node name="hit" type="Area2D" parent="damage/spike8"]
 position = Vector2( -0.333328, 0.25 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="damage/spike8/hit"]
 position = Vector2( -0.666656, 4 )
-shape = SubResource( 20 )
+shape = SubResource( 10 )
 disabled = true
 
 [node name="spike9" type="Sprite" parent="damage"]
@@ -985,20 +933,20 @@ __meta__ = {
 }
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="damage/spike9"]
-anims/spike = SubResource( 23 )
+anims/spike = SubResource( 13 )
 
 [node name="Area2D" type="Area2D" parent="damage/spike9"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="damage/spike9/Area2D"]
 position = Vector2( -0.666656, 4 )
-shape = SubResource( 20 )
+shape = SubResource( 10 )
 
 [node name="hit" type="Area2D" parent="damage/spike9"]
 position = Vector2( -0.333328, 0.25 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="damage/spike9/hit"]
 position = Vector2( -0.666656, 4 )
-shape = SubResource( 20 )
+shape = SubResource( 10 )
 disabled = true
 
 [node name="spike3" type="Sprite" parent="damage"]
@@ -1011,20 +959,20 @@ __meta__ = {
 }
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="damage/spike3"]
-anims/spike = SubResource( 24 )
+anims/spike = SubResource( 14 )
 
 [node name="Area2D" type="Area2D" parent="damage/spike3"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="damage/spike3/Area2D"]
 position = Vector2( -0.666656, 4 )
-shape = SubResource( 20 )
+shape = SubResource( 10 )
 
 [node name="hit" type="Area2D" parent="damage/spike3"]
 position = Vector2( -0.333328, 0.25 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="damage/spike3/hit"]
 position = Vector2( -0.666656, 4 )
-shape = SubResource( 20 )
+shape = SubResource( 10 )
 disabled = true
 
 [node name="spike4" type="Sprite" parent="damage"]
@@ -1037,20 +985,20 @@ __meta__ = {
 }
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="damage/spike4"]
-anims/spike = SubResource( 25 )
+anims/spike = SubResource( 15 )
 
 [node name="Area2D" type="Area2D" parent="damage/spike4"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="damage/spike4/Area2D"]
 position = Vector2( -0.666656, 4 )
-shape = SubResource( 20 )
+shape = SubResource( 10 )
 
 [node name="hit" type="Area2D" parent="damage/spike4"]
 position = Vector2( -0.333328, 0.25 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="damage/spike4/hit"]
 position = Vector2( -0.666656, 4 )
-shape = SubResource( 20 )
+shape = SubResource( 10 )
 disabled = true
 
 [node name="spike5" type="Sprite" parent="damage"]
@@ -1063,20 +1011,20 @@ __meta__ = {
 }
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="damage/spike5"]
-anims/spike = SubResource( 26 )
+anims/spike = SubResource( 16 )
 
 [node name="Area2D" type="Area2D" parent="damage/spike5"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="damage/spike5/Area2D"]
 position = Vector2( -0.666656, 4 )
-shape = SubResource( 20 )
+shape = SubResource( 10 )
 
 [node name="hit" type="Area2D" parent="damage/spike5"]
 position = Vector2( -0.333328, 0.25 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="damage/spike5/hit"]
 position = Vector2( -0.666656, 4 )
-shape = SubResource( 20 )
+shape = SubResource( 10 )
 disabled = true
 
 [node name="spike6" type="Sprite" parent="damage"]
@@ -1089,20 +1037,20 @@ __meta__ = {
 }
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="damage/spike6"]
-anims/spike = SubResource( 27 )
+anims/spike = SubResource( 17 )
 
 [node name="Area2D" type="Area2D" parent="damage/spike6"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="damage/spike6/Area2D"]
 position = Vector2( -0.666656, 4 )
-shape = SubResource( 20 )
+shape = SubResource( 10 )
 
 [node name="hit" type="Area2D" parent="damage/spike6"]
 position = Vector2( -0.333328, 0.25 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="damage/spike6/hit"]
 position = Vector2( -0.666656, 4 )
-shape = SubResource( 20 )
+shape = SubResource( 10 )
 disabled = true
 
 [node name="spike7" type="Sprite" parent="damage"]
@@ -1115,20 +1063,20 @@ __meta__ = {
 }
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="damage/spike7"]
-anims/spike = SubResource( 28 )
+anims/spike = SubResource( 18 )
 
 [node name="Area2D" type="Area2D" parent="damage/spike7"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="damage/spike7/Area2D"]
 position = Vector2( -0.666656, 4 )
-shape = SubResource( 20 )
+shape = SubResource( 10 )
 
 [node name="hit" type="Area2D" parent="damage/spike7"]
 position = Vector2( -0.333328, 0.25 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="damage/spike7/hit"]
 position = Vector2( -0.666656, 4 )
-shape = SubResource( 20 )
+shape = SubResource( 10 )
 disabled = true
 [connection signal="Updatetimer" from="." to="CanvasLayer/interface" method="_on_scene_Updatetimer"]
 [connection signal="notenough" from="." to="CanvasLayer/interface" method="_on_scene_notenough"]
